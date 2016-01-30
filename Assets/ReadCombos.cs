@@ -22,9 +22,16 @@ public class ReadCombos : MonoBehaviour
     private KeyCombo CFogo;
     private KeyCombo CTerra;
     private KeyCombo CAr;
+
+    private bool wait = false;
+    public float waitTime = 1f;
+    private float oritime;
+
     // Use this for initialization
     void Start()
     {
+        oritime = waitTime;
+        
         //Inicialização de arrays
         comboAgua = new int[4];
         comboFogo = new int[4];
@@ -40,6 +47,8 @@ public class ReadCombos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Waiter();
+
         GenerateCombos();
         //se terminou de gerar os combos
         if (GenerateComboStrings() && !isComboCreated)
@@ -51,25 +60,29 @@ public class ReadCombos : MonoBehaviour
             isComboCreated = true;
             Debug.Log("Created Random Combos!");
         }
-        if (isComboCreated && CAgua.Check())
+        if (isComboCreated && CAgua.Check() && !wait)
         {
             Debug.Log("AGUA BREAKER");
             GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 1, SendMessageOptions.DontRequireReceiver);
+            wait = true;
         }
-        else if (isComboCreated && CFogo.Check())
+        else if (isComboCreated && CFogo.Check() && !wait)
         {
             Debug.Log("And everything changed when the fire nation attacked.");
             GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 2, SendMessageOptions.DontRequireReceiver);
+            wait = true;
         }
-        else if(isComboCreated && CTerra.Check())
+        else if(isComboCreated && CTerra.Check() && !wait)
         {
             Debug.Log("TERRA BREAKER");
             GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 3, SendMessageOptions.DontRequireReceiver);
+            wait = true;
         }
-        else if(isComboCreated && CAr.Check())
+        else if(isComboCreated && CAr.Check() && !wait)
         {
             Debug.Log("AVATAR");
             GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 4, SendMessageOptions.DontRequireReceiver);
+            wait = true;
         }
     }
 
@@ -178,5 +191,18 @@ public class ReadCombos : MonoBehaviour
             }
         }
         return true;
+    }
+
+    void Waiter()
+    {
+        if (wait)
+        {
+            waitTime -= Time.deltaTime;
+            if (waitTime <= 0)
+            {
+                wait = false;
+                waitTime = oritime;
+            }
+        }
     }
 }
