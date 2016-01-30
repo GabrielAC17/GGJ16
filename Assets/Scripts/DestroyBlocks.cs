@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DestroyBlocks : MonoBehaviour {
 	public void destroyBlocks(int blockType){
+		Debug.Log ("typeBlock to destroy"+blockType);
 	}
 	// Use this for initialization
 	/*
