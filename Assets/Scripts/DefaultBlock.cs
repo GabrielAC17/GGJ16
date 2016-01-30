@@ -21,7 +21,7 @@ public class DefaultBlock : MonoBehaviour {
 			spt.color = new Color (1f,0f,0f,1f); 
 			break;
 		case 3:
-			spt.color = new Color (0f,0.75f,1f,1f); 
+			spt.color = new Color (1f,0.5f,0f,1f); 
 			break;
 		case 4:
 			spt.color = new Color (0f,1f,0f,1f); 
