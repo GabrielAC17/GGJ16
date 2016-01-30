@@ -30,16 +30,12 @@ public class GetCombo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //diminui e faz controle do tempo
-        Waiter();
-
         //Verificar a primeira tecla do combo
         if (Input.GetButtonDown("B1") && !wait)
         {
             currentCombo[0] = 1;
             Debug.Log(currentCombo[0]);
             wait = true;
-            row++;
         }
         else if (Input.GetButtonDown("B2") && !wait)
         {
@@ -54,40 +50,44 @@ public class GetCombo : MonoBehaviour
             wait = true;
         }
 
+        
+
         //Verifica a segunda tecla do combo
-        if (Input.GetButtonDown("B1") && wait && currentCombo[0] != 0 && !Input.anyKeyDown)
+        if (Input.GetButtonDown("B1") && wait && currentCombo[0] != 0 && row == 2)
         {
             currentCombo[1] = 1;
             Debug.Log(currentCombo[1]);
             ResetWaiter();
         }
-        else if (Input.GetButtonDown("B2") && wait && currentCombo[0] != 0 && !Input.anyKeyDown)
+        else if (Input.GetButtonDown("B2") && wait && currentCombo[0] != 0 && row == 2)
         {
             currentCombo[1] = 2;
             Debug.Log(currentCombo[1]);
             ResetWaiter();
         }
-        else if (Input.GetButtonDown("B3") && wait && currentCombo[0] != 0 && !Input.anyKeyDown)
+        else if (Input.GetButtonDown("B3") && wait && currentCombo[0] != 0 && row == 2)
         {
             currentCombo[1] = 3;
             Debug.Log(currentCombo[1]);
             ResetWaiter();
         }
 
+        
+
         //Verifica a terceira tecla do combo
-        if (Input.GetButtonDown("B1") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && !Input.anyKeyDown)
+        if (Input.GetButtonDown("B1") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && row == 3)
         {
             currentCombo[2] = 1;
             ResetWaiter();
             Debug.Log(currentCombo[2]);
         }
-        else if (Input.GetButtonDown("B2") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && !Input.anyKeyDown)
+        else if (Input.GetButtonDown("B2") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && row == 3)
         {
             currentCombo[2] = 2;
             ResetWaiter();
             Debug.Log(currentCombo[2]);
         }
-        else if (Input.GetButtonDown("B3") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && !Input.anyKeyDown)
+        else if (Input.GetButtonDown("B3") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && row == 3)
         {
             currentCombo[2] = 3;
             ResetWaiter();
@@ -95,7 +95,7 @@ public class GetCombo : MonoBehaviour
         }
 
         // Verifica a quarta tecla do combo
-        if (Input.GetButtonDown("B1") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && currentCombo[2] != 0 && !Input.anyKeyDown)
+        if (Input.GetButtonDown("B1") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && currentCombo[2] != 0 && row == 4)
         {
             currentCombo[3] = 1;
             ResetWaiter();
@@ -103,7 +103,7 @@ public class GetCombo : MonoBehaviour
             wait = false;
             Debug.Log(currentCombo);
         }
-        else if (Input.GetButtonDown("B2") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && currentCombo[2] != 0 && !Input.anyKeyDown)
+        else if (Input.GetButtonDown("B2") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && currentCombo[2] != 0 && row == 4)
         {
             currentCombo[3] = 2;
             ResetWaiter();
@@ -111,7 +111,7 @@ public class GetCombo : MonoBehaviour
             wait = false;
             Debug.Log(currentCombo);
         }
-        else if (Input.GetButtonDown("B3") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && currentCombo[2] != 0 && !Input.anyKeyDown)
+        else if (Input.GetButtonDown("B3") && wait && currentCombo[0] != 0 && currentCombo[1] != 0 && currentCombo[2] != 0 && row == 4)
         {
             currentCombo[3] = 3;
             ResetWaiter();
@@ -130,6 +130,51 @@ public class GetCombo : MonoBehaviour
                 Debug.Log("Winner!");
             }
         }
+
+        //libera a segunda tecla
+        if (currentCombo[0] == 1 && Input.GetButtonUp("B1"))
+        {
+            row++;
+        }
+        else if (currentCombo[0] == 2 && Input.GetButtonUp("B2"))
+        {
+            row++;
+        }
+        else if (currentCombo[0] == 3 && Input.GetButtonUp("B3"))
+        {
+            row++;
+        }
+
+        //libera a terceira tecla
+        if (currentCombo[1] != 1 && Input.GetButtonUp("B1"))
+        {
+            row++;
+        }
+        else if (currentCombo[1] != 2 && Input.GetButtonUp("B2"))
+        {
+            row++;
+        }
+        else if (currentCombo[1] != 3 && Input.GetButtonUp("B3"))
+        {
+            row++;
+        }
+
+        //libera a quarta tecla
+        if (currentCombo[2] != 1 && Input.GetButtonUp("B1"))
+        {
+            row++;
+        }
+        else if (currentCombo[2] != 2 && Input.GetButtonUp("B2"))
+        {
+            row++;
+        }
+        else if (currentCombo[2] != 3 && Input.GetButtonUp("B3"))
+        {
+            row++;
+        }
+
+        //diminui e faz controle do tempo
+        Waiter();
     }
 
     void Waiter()
