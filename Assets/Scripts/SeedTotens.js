@@ -21,7 +21,9 @@ function Start () {
 		var totensSequence = totens[totensIndx];
 		for(var blockIndx=0;blockIndx<totensSequence.Length; blockIndx++){
 			var blockType = totens[totensIndx][blockIndx];
-				Instantiate(prefabBlocks[blockType-1],new Vector3(positionsX[totensIndx],positionY+(blockIndx*(5+blockIndx*0.2)), 0), Quaternion.identity);
+				var gameObject = Instantiate(prefabBlocks[blockType-1],new Vector3(positionsX[totensIndx],positionY+(blockIndx*(5+blockIndx*0.2)), 0), Quaternion.identity) as GameObject;
+				//gameObject.GetComponent(DefaultBlock).test();
+
 			}
 		}
 	}

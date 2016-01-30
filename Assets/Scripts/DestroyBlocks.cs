@@ -7,9 +7,11 @@ public class DestroyBlocks : MonoBehaviour {
 	private ArrayList listToRemove= new ArrayList();
 	private ArrayList allList= new ArrayList();
 	public void destroyBlocks(int blockType){
-		Debug.Log ("typeBlock to destroy: " + blockType);
+		//Debug.Log ("typeBlock to destroy: " + blockType);
 		foreach (Collider2D obj in allList) {
-			Destroy (obj.gameObject);
+			DefaultBlock objToTest = obj.GetComponent<DefaultBlock> ();
+			if(objToTest.blockType ==blockType)
+				Destroy (obj.gameObject);
 		}
 		allList= new ArrayList();
 	}
