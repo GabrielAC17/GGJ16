@@ -14,7 +14,7 @@ function Start () {
 		var totensSequence = totens[totensIndx];
 		for(var blockIndx=0;blockIndx<totensSequence.Length; blockIndx++){
 			var blockType = totens[totensIndx][blockIndx];
-				Instantiate(prefabBlocks[blockType-1],new Vector3(positionsX[totensIndx],positionY+(blockIndx*3.5), 0), Quaternion.identity);
+				Instantiate(prefabBlocks[blockType-1],new Vector3(positionsX[totensIndx],positionY+(blockIndx*5), 0), Quaternion.identity);
 			}
 		}
 	}
