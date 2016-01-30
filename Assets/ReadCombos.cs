@@ -17,7 +17,6 @@ public class ReadCombos : MonoBehaviour
 
     private int j = 0;
     private bool isComboCreated = false;
-    private int elemento;
 
     private KeyCombo CAgua;
     private KeyCombo CFogo;
@@ -54,23 +53,23 @@ public class ReadCombos : MonoBehaviour
         }
         if (isComboCreated && CAgua.Check())
         {
-            elemento = 1;
             Debug.Log("AGUA BREAKER");
+            GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 1, SendMessageOptions.DontRequireReceiver);
         }
         else if (isComboCreated && CFogo.Check())
         {
-            elemento = 2;
             Debug.Log("And everything changed when the fire nation attacked.");
+            GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 2, SendMessageOptions.DontRequireReceiver);
         }
         else if(isComboCreated && CTerra.Check())
         {
-            elemento = 3;
             Debug.Log("TERRA BREAKER");
+            GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 3, SendMessageOptions.DontRequireReceiver);
         }
         else if(isComboCreated && CAr.Check())
         {
-            elemento = 4;
             Debug.Log("AVATAR");
+            GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 4, SendMessageOptions.DontRequireReceiver);
         }
     }
 
@@ -179,10 +178,5 @@ public class ReadCombos : MonoBehaviour
             }
         }
         return true;
-    }
-
-    public int destroyBlocks()
-    {
-        return elemento;
     }
 }
