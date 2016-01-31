@@ -18,7 +18,8 @@ public class SeedTotens : MonoBehaviour {
 				DefaultBlock obj = gameObject.GetComponent<DefaultBlock> ();
 				obj.setType(blockType);
 				obj.transform.position = new Vector3 (obj.transform.position.x, obj.transform.position.y, (z + (-0.1f * blockIndx)));
-			}
+                GameObject.FindGameObjectWithTag("GameManager").SendMessage("addBlocks");
+            }
 		}
 	}
 	

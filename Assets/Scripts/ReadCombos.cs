@@ -64,24 +64,28 @@ public class ReadCombos : MonoBehaviour
         {
             Debug.Log("AGUA BREAKER");
             GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 1);
+            GameObject.FindGameObjectWithTag("GameManager").SendMessage("OKombo",1);
             wait = true;
         }
         else if (isComboCreated && CFogo.Check() && !wait)
         {
             Debug.Log("And everything changed when the fire nation attacked.");
             GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 2);
+            GameObject.FindGameObjectWithTag("GameManager").SendMessage("OKombo",2);
             wait = true;
         }
         else if(isComboCreated && CTerra.Check() && !wait)
         {
             Debug.Log("TERRA BREAKER");
             GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 3);
+            GameObject.FindGameObjectWithTag("GameManager").SendMessage("OKombo",3);
             wait = true;
         }
         else if(isComboCreated && CAr.Check() && !wait)
         {
             Debug.Log("AVATAR");
             GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("destroyBlocks", 4);
+            GameObject.FindGameObjectWithTag("GameManager").SendMessage("OKombo",4);
             wait = true;
         }
     }
