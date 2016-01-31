@@ -17,6 +17,8 @@ public class DestroyBlocks : MonoBehaviour {
 			if(objToTest.blockType == blockType)
             {
                 Destroy(obj.gameObject);
+				Score.plusScore (1);
+				Debug.Log (Score.score);
                 isDestroyed = true;
                 GameObject.FindGameObjectWithTag("GameManager").SendMessage("removeBlocks");
             }

@@ -23,6 +23,7 @@ public class Highscores : MonoBehaviour {
 	public Text scores;
 
 	void Init() {
+		
 		DownloadHighscores();
 		scores.text = "";
 		names.text = "";
