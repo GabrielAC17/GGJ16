@@ -23,9 +23,14 @@ public class GameManager : MonoBehaviour {
     public float waitTime = 3f;
     private float oritime;
 
-    private bool waitAgua = false;
+    private bool isEarthEnabled = false;
+
+    private bool waitAgua = true;
     public float waitTimeAgua = 15f;
     private float oritimeAgua;
+    private int aguaReset = 0;
+
+
 
     // Use this for initialization
     void Start () {
@@ -71,7 +76,7 @@ public class GameManager : MonoBehaviour {
             {
                 waitAgua = false;
                 waitTimeAgua = oritimeAgua;
-                GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("ResetSpecial", 0);
+                Gameover();
             }
         }
     }
@@ -113,10 +118,22 @@ public class GameManager : MonoBehaviour {
         }
         if (isAirEnabled && element == 4)
         {
-            health += 3;
+            health += 2;
             isAirEnabled = false;
         }
-            
+        
+        if (waitAgua && element == 1)
+        {
+            waitAgua = false;
+            waitTimeAgua = oritimeAgua;
+            GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("ResetSpecial", aguaReset);
+        }
+
+        if (isEarthEnabled)
+        {
+
+        }
+           
     }
 
     void Specials(int element)
@@ -124,14 +141,14 @@ public class GameManager : MonoBehaviour {
         switch (element)
         {
             case 1:
-                if (!waitAgua)
-                    waitAgua = true;
+                waitAgua = true;
+                Debug.Log("ok");
                 break;
             case 2:
                 isFireEnabled = true;
                 break;
             case 3:
-                
+                isEarthEnabled = true;
                 break;
             case 4:
                 if (!wait )

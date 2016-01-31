@@ -8,6 +8,7 @@ public class DestroyBlocks : MonoBehaviour {
 	private ArrayList allList= new ArrayList();
     private bool isDestroyed = false;
     private bool[] DisableSpecial;
+    private bool isFirstWater = false;
 
 	public void destroyBlocks(int blockType){
 		//Debug.Log ("typeBlock to destroy: " + blockType);
@@ -19,8 +20,7 @@ public class DestroyBlocks : MonoBehaviour {
                 isDestroyed = true;
                 GameObject.FindGameObjectWithTag("GameManager").SendMessage("removeBlocks");
             }
-
-		    if (objToTest.blockType == 1 && !DisableSpecial[0])
+            if (objToTest.blockType == 1 && !DisableSpecial[0])
             {
                 GameObject.FindGameObjectWithTag("GameManager").SendMessage("Specials", 1);
                 DisableSpecial[0] = true;
@@ -56,6 +56,21 @@ public class DestroyBlocks : MonoBehaviour {
 		}
 
 	}
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!isFirstWater)
+        {
+            DefaultBlock objToTest = other.GetComponent<DefaultBlock>();
+            if (objToTest.blockType == 1)
+            {
+                GameObject.FindGameObjectWithTag("GameManager").SendMessage("Specials", 1);
+            }
+            isFirstWater = true;
+        }
+        
+
+    }
 
     void DestroyFirstLine()
     {

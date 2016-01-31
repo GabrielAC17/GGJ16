@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <connectionOption></connectionOption>
+ <rdmgr>
+  <timestamp type="u64_t">1454252277</timestamp>
+  <hostname>GABRIEL</hostname>
+  <os>windows</os>
+  <product>Intel® Inspector XE 2016 Update 1</product>
+  <buildNumber type="s32_t">434495</buildNumber>
+  <logicalCPUCount type="s32_t">4</logicalCPUCount>
+  <CPUFrequency type="s64_t">2600000000</CPUFrequency>
+ </rdmgr>
+ <contextValues>
+  <contextValue>
+   <id>emulatorByCtxKnob</id>
+   <value></value>
+  </contextValue>
+ </contextValues>
+ <All_Configurations-All_Platforms>
+  <target_settings>
+   <selected_workload>
+    <localhost>launch</localhost>
+   </selected_workload>
+   <result_pattern>
+    <localhost>r@@@{at}</localhost>
+   </result_pattern>
+   <workloads>
+    <localhost>
+     <launch type="pointer" type_id="dasID_cctrl2::ApplicationWorkload" ptr_type="dasID_cctrl2::IWorkload">
+      <workload>
+       <targetName>launch</targetName>
+       <launch_app.app_to_launch>C:\Users\gabri\git\GGJ16\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll</launch_app.app_to_launch>
+       <launch_app.working_folder>C:\Users\gabri\git\GGJ16\Temp\UnityVS_bin\Debug</launch_app.working_folder>
+       <use_app_dir_as_work_dir type="bool">false</use_app_dir_as_work_dir>
+       <result_directory.path>C:\Users\gabri\git\GGJ16\My Inspector XE Results - GGJ16.CSharp\r@@@{at}</result_directory.path>
+       <search_directories>
+        <item>
+         <value>sym=C:\Users\gabri\git\GGJ16</value>
+        </item>
+        <item>
+         <value>bin=C:\Users\gabri\git\GGJ16</value>
+        </item>
+        <item>
+         <value>bin=C:/Users\gabri\git\GGJ16\$(VC_ExecutablePath_x86)</value>
+        </item>
+        <item>
+         <value>bin=C:/Users\gabri\git\GGJ16\$(WindowsSDK_ExecutablePath)</value>
+        </item>
+        <item>
+         <value>bin=C:/Users\gabri\git\GGJ16\$(VS_ExecutablePath)</value>
+        </item>
+        <item>
+         <value>bin=C:/Users\gabri\git\GGJ16\$(MSBuild_ExecutablePath)</value>
+        </item>
+        <item>
+         <value>bin=C:\WINDOWS\SysWow64</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\FxCop</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\NativeBinaries\x86</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\IntelSWTools\Trace Analyzer and Collector\9.1.2.024\bin</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2016.1.146\windows\mpi\intel64\bin</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\mpirt</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\ia32_win\mpirt</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\ia32_win\compiler</value>
+        </item>
+        <item>
+         <value>bin=C:\ProgramData\Oracle\Java\javapath</value>
+        </item>
+        <item>
+         <value>bin=C:\WINDOWS\system32</value>
+        </item>
+        <item>
+         <value>bin=C:\WINDOWS</value>
+        </item>
+        <item>
+         <value>bin=C:\WINDOWS\System32\Wbem</value>
+        </item>
+        <item>
+         <value>bin=C:\WINDOWS\System32\WindowsPowerShell\v1.0</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\AMD\ATI.ACE\Core-Static</value>
+        </item>
+        <item>
+         <value>bin=C:/Users\gabri\git\GGJ16\%LUXRENDER_ROOT%</value>
+        </item>
+        <item>
+         <value>bin=C:\WINDOWS\system32\config\systemprofile\.dnx\bin</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files\Microsoft DNX\Dnvm</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files\Common Files\Autodesk Shared</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\GtkSharp\2.12\bin</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\Skype\Phone</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit</value>
+        </item>
+        <item>
+         <value>bin=C:\Users\gabri\Source\Repos\connect-v-master\bin</value>
+        </item>
+        <item>
+         <value>bin=C:\Program Files (x86)\IntelSWTools\Trace Analyzer and Collector\9.1.2.024\dll</value>
+        </item>
+        <item>
+         <value>bin=C:\Users\gabri\.dnx\bin</value>
+        </item>
+       </search_directories>
+       <context>
+        <contextValue>
+         <id>appdebug</id>
+         <value>off</value>
+        </contextValue>
+        <contextValue>
+         <id>custom_debugger</id>
+         <value></value>
+        </contextValue>
+        <contextValue>
+         <id>debug_this_problem</id>
+         <value></value>
+        </contextValue>
+        <contextValue>
+         <id>debug_using</id>
+         <value>gdb</value>
+        </contextValue>
+        <contextValue>
+         <id>heartbeat</id>
+         <value type="bool">true</value>
+        </contextValue>
+        <contextValue>
+         <id>modules_switch</id>
+         <value>knob.modules_switch.include</value>
+        </contextValue>
+        <contextValue>
+         <id>mrte_mode</id>
+         <value>managed</value>
+        </contextValue>
+        <contextValue>
+         <id>process_for_analysis</id>
+         <value></value>
+        </contextValue>
+        <contextValue>
+         <id>suppressions</id>
+         <value>delete</value>
+        </contextValue>
+        <contextValue>
+         <id>targetType</id>
+         <value>launch</value>
+        </contextValue>
+       </context>
+      </workload>
+     </launch>
+    </localhost>
+   </workloads>
+  </target_settings>
+ </All_Configurations-All_Platforms>
+</root>

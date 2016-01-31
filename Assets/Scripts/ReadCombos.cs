@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ReadCombos : MonoBehaviour
 {
@@ -27,11 +28,12 @@ public class ReadCombos : MonoBehaviour
     public float waitTime = 1f;
     private float oritime;
 
+    public Text[] combosGUI;
+
     // Use this for initialization
     void Start()
     {
         oritime = waitTime;
-        
         //Inicialização de arrays
         comboAgua = new int[4];
         comboFogo = new int[4];
@@ -42,6 +44,7 @@ public class ReadCombos : MonoBehaviour
         SFogo = new string[4];
         STerra = new string[4];
         SAr = new string[4];
+
     }
 
     // Update is called once per frame
@@ -59,6 +62,11 @@ public class ReadCombos : MonoBehaviour
             CAr = new KeyCombo(SAr);
             isComboCreated = true;
             Debug.Log("Created Random Combos!");
+
+            combosGUI[0].text = "Agua: "+ comboAgua[0] + " " + comboAgua[1] + " " + comboAgua[2] + " " + comboAgua[3];
+            combosGUI[1].text = "Fogo: "+comboFogo[0] + " " + comboFogo[1] + " " + comboFogo[2] + " " + comboFogo[3];
+            combosGUI[2].text = "Terra: "+comboTerra[0] + " " + comboTerra[1] + " " + comboTerra[2] + " " + comboTerra[3];
+            combosGUI[3].text = "Ar: "+comboAr[0] + " " + comboAr[1] + " " + comboAr[2] + " " + comboAr[3];
         }
         if (isComboCreated && CAgua.Check() && !wait)
         {
