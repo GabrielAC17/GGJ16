@@ -6,7 +6,7 @@ public class SeedTotens : MonoBehaviour {
 	public float distanceX = 5;
 	public float positionY = 10;
 	public float z=11;
-	private int[][] totens ={new int[]{1,2,4,2,3,4,2,3,1,4,3,2},new int[]{2,3,4,1,2,3,4},new int[]{3,4,1,2,3,4,3,2,2},new int[]{4,1,2,3,4,1,2,3,4}};
+	private int[][] totens ={new int[]{1,4,2,3,1,1,4,1,4,2},new int[]{2,2,2,4,1,4,2,3,1,1},new int[]{4,2,1,2,3,4,2,1,4,4},new int[]{3,4,4,1,2,1,3,2,1,2}};
 	// Use this for initialization
 	void Start () {
 		float[] positionsX = {-distanceX-distanceX/2,-distanceX/2,distanceX/2,distanceX+distanceX/2};

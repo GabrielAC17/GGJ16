@@ -6,15 +6,24 @@ public class DestroyBlocks : MonoBehaviour {
 	private bool allBlocksVerified = true;
 	private ArrayList listToRemove= new ArrayList();
 	private ArrayList allList= new ArrayList();
+    private bool isDestroyed = false;
 
 	public void destroyBlocks(int blockType){
 		//Debug.Log ("typeBlock to destroy: " + blockType);
 		foreach (Collider2D obj in allList) {
 			DefaultBlock objToTest = obj.GetComponent<DefaultBlock> ();
 			if(objToTest.blockType == blockType)
-				Destroy (obj.gameObject);
+            {
+                Destroy(obj.gameObject);
+                isDestroyed = true;
+            }
+				
 		}
-		allList.Clear ();
+        if (isDestroyed)
+        {
+            allList.Clear();
+            isDestroyed = false;
+        }
 	}
 
 	void OnTriggerStay2D(Collider2D other) {
