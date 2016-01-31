@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
     public float waitTimeAgua = 15f;
     private float oritimeAgua;
     private int aguaReset = 0;
+
     
     // Use this for initialization
     void Start () {
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour {
 
     void Gameover()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("GameOver");
     }
 
     void OKombo(int element)
