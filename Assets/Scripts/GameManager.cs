@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour {
     private int totalBlocks=0;
 
     private AudioSource audio;
-    public AudioClip[] audioClip;
-    public AudioSource au;
 
     public Text hp;
     public Text score;
@@ -40,13 +38,7 @@ public class GameManager : MonoBehaviour {
         oritimeAgua = waitTimeAgua;
     }
 
-    void PlaySound(int clip, bool loop = false)
-    {
-        if (loop)
-            au.loop = true;
-        au.clip = audioClip[clip];
-        au.Play();
-    }
+    
 
     // Update is called once per frame
     void Update () {
