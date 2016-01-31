@@ -14,7 +14,7 @@ public class DestroyBlocks : MonoBehaviour {
 			if(objToTest.blockType == blockType)
 				Destroy (obj.gameObject);
 		}
-		allList= new ArrayList();
+		allList.Clear ();
 	}
 
 	void OnTriggerStay2D(Collider2D other) {
