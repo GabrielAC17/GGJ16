@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
     public Text score;
 
     private bool isFireEnabled = false;
-    private int fireHealth = 2;
+    private int fireHealth = 3;
 
     private bool isAirEnabled = false;
 
@@ -23,15 +23,21 @@ public class GameManager : MonoBehaviour {
     public float waitTime = 3f;
     private float oritime;
 
+    private bool waitAgua = false;
+    public float waitTimeAgua = 15f;
+    private float oritimeAgua;
+
     // Use this for initialization
     void Start () {
         audio = GetComponent<AudioSource>();
         oritime = waitTime;
+        oritimeAgua = waitTimeAgua;
     }
 	
 	// Update is called once per frame
 	void Update () {
         Waiter();
+        WaiterAgua();
 
         hp.text = "Jogadas: "+health;
         score.text = "Score: ";
@@ -51,7 +57,21 @@ public class GameManager : MonoBehaviour {
             {
                 wait = false;
                 waitTime = oritime;
-                GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("ResetSpecialAir");
+                GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("ResetSpecial",3);
+            }
+        }
+    }
+
+    void WaiterAgua()
+    {
+        if (waitAgua)
+        {
+            waitTimeAgua -= Time.deltaTime;
+            if (waitTimeAgua <= 0)
+            {
+                waitAgua = false;
+                waitTimeAgua = oritimeAgua;
+                GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("ResetSpecial", 0);
             }
         }
     }
@@ -86,8 +106,9 @@ public class GameManager : MonoBehaviour {
             fireHealth--;
             if (element == 2)
             {
-                fireHealth = 2;
+                fireHealth = 3;
                 isFireEnabled = false;
+                GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("ResetSpecial", 1);
             }
         }
         if (isAirEnabled && element == 4)
@@ -103,7 +124,8 @@ public class GameManager : MonoBehaviour {
         switch (element)
         {
             case 1:
-
+                if (!waitAgua)
+                    waitAgua = true;
                 break;
             case 2:
                 isFireEnabled = true;

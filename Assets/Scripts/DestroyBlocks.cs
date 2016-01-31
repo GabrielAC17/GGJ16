@@ -57,9 +57,26 @@ public class DestroyBlocks : MonoBehaviour {
 
 	}
 
-    void ResetSpecialAir()
+    void DestroyFirstLine()
     {
-        DisableSpecial[3] = false;
+        foreach (Collider2D obj in allList)
+        {
+            DefaultBlock objToTest = obj.GetComponent<DefaultBlock>();
+            Destroy(obj.gameObject);
+            isDestroyed = true;
+            GameObject.FindGameObjectWithTag("GameManager").SendMessage("removeBlocks");
+        }
+        if (isDestroyed)
+        {
+            allList.Clear();
+            isDestroyed = false;
+        }
+    }
+
+
+    void ResetSpecial(int special)
+    {
+        DisableSpecial[special] = false;
     }
 			
 	// Use this for initialization
