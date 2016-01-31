@@ -10,9 +10,12 @@ public class GameManager : MonoBehaviour {
     private int totalBlocks=0;
 
     private AudioSource audio;
+    public AudioClip[] audioClip;
+    public AudioSource au;
 
     public Text hp;
     public Text score;
+    public Text[] temporarios;
 
     private bool isFireEnabled = false;
     private int fireHealth = 3;
@@ -29,22 +32,30 @@ public class GameManager : MonoBehaviour {
     public float waitTimeAgua = 15f;
     private float oritimeAgua;
     private int aguaReset = 0;
-
-
-
+    
     // Use this for initialization
     void Start () {
         audio = GetComponent<AudioSource>();
         oritime = waitTime;
         oritimeAgua = waitTimeAgua;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void PlaySound(int clip, bool loop = false)
+    {
+        if (loop)
+            au.loop = true;
+        au.clip = audioClip[clip];
+        au.Play();
+    }
+
+    // Update is called once per frame
+    void Update () {
         Waiter();
         WaiterAgua();
+        temporarios[0].text = "Water Timer: "+(int)waitTimeAgua;
+        temporarios[1].text = "Fire Turns: " + fireHealth;
 
-        hp.text = "Jogadas: "+health;
+        hp.text = "Turns: "+health;
         score.text = "Score: ";
 
         if (health <= 0 || fireHealth<=0)

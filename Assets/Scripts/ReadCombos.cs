@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class ReadCombos : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class ReadCombos : MonoBehaviour
     private int[] comboFogo;
     private int[] comboTerra;
     private int[] comboAr;
+
+    public AudioClip[] audioClip;
+    public AudioSource au;
 
     //Preencherá as strings de acordo com os valores int gerados no começo
     private string[] SAgua;
@@ -30,6 +34,14 @@ public class ReadCombos : MonoBehaviour
 
     public Text[] combosGUI;
 
+    void PlaySound(int clip, bool loop = false)
+    {
+        if (loop)
+            au.loop = true;
+        au.clip = audioClip[clip];
+        au.Play();
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -50,6 +62,20 @@ public class ReadCombos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetButtonDown("B1"))
+        {
+            PlaySound(0, false);
+        }
+        else if(Input.GetButtonDown("B2"))
+        {
+            PlaySound(1, false);
+        }
+        else if (Input.GetButtonDown("B3"))
+        {
+            PlaySound(2, false);
+        }
+
         Waiter();
 
         GenerateCombos();
