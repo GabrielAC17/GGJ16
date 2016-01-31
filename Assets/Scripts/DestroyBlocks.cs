@@ -18,7 +18,7 @@ public class DestroyBlocks : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D other) {
-		Debug.Log ("TriggerStay");
+		//Debug.Log ("TriggerStay");
 		if (!allList.Contains (other)) {
 			allList.Add (other);
 			Debug.Log ("Block "+ other.gameObject.GetInstanceID() + " added!!");
