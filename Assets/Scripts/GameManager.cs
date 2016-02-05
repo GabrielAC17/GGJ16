@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
     private bool isFireEnabled = false;
     private int fireHealth = 3;
 
-    private bool isAirEnabled = false;
+    private int isAirEnabled = 0;
 
     private bool wait = false;
     public float waitTime = 3f;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
 
     private bool isEarthEnabled = false;
 
-    private bool waitAgua = true;
+    private bool waitAgua = false;
     public float waitTimeAgua = 15f;
     private float oritimeAgua;
     private int aguaReset = 0;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour {
             {
                 wait = false;
                 waitTime = oritime;
-                GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("ResetSpecial",3);
+                //GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("ResetSpecial",3);
             }
         }
     }
@@ -120,17 +120,16 @@ public class GameManager : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("ResetSpecial", 1);
             }
         }
-        if (isAirEnabled && element == 4)
+        if (isAirEnabled>0 && element == 4)
         {
-            health += 2;
-            isAirEnabled = false;
+            health += isAirEnabled+1;
+            isAirEnabled=0;
         }
         
         if (waitAgua && element == 1)
         {
             waitAgua = false;
             waitTimeAgua = oritimeAgua;
-            GameObject.FindGameObjectWithTag("DestroyArea").SendMessage("ResetSpecial", aguaReset);
         }
 
         if (isEarthEnabled)
@@ -146,7 +145,6 @@ public class GameManager : MonoBehaviour {
         {
             case 1:
                 waitAgua = true;
-                Debug.Log("ok");
                 break;
             case 2:
                 isFireEnabled = true;
@@ -155,11 +153,8 @@ public class GameManager : MonoBehaviour {
                 isEarthEnabled = true;
                 break;
             case 4:
-                if (!wait )
-                {
-                    isAirEnabled = true;
-                    wait = true;
-                }
+                isAirEnabled++;
+                //wait = true;
                 break;
             default:
                 break;

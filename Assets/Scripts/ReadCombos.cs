@@ -156,6 +156,10 @@ public class ReadCombos : MonoBehaviour
             comboFogo[j] = Random.Range(1, 4);
             comboTerra[j] = Random.Range(1, 4);
             comboAr[j] = Random.Range(1, 4);
+
+            if (comboAgua == comboFogo || comboAgua == comboTerra || comboAgua == comboAr || comboFogo == comboTerra ||
+                comboFogo == comboAr || comboTerra == comboAr)
+                j = 0;
             j++;
         }
     }

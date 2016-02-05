@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DestroyBlocks : MonoBehaviour {
 	private bool isCombo = false;
@@ -10,6 +11,9 @@ public class DestroyBlocks : MonoBehaviour {
     private bool[] DisableSpecial;
     private bool isFirstWater = false;
 
+    public ReadCombos read;
+    public Text uIScore;
+
 	public void destroyBlocks(int blockType){
 		//Debug.Log ("typeBlock to destroy: " + blockType);
 		foreach (Collider2D obj in allList) {
@@ -18,15 +22,19 @@ public class DestroyBlocks : MonoBehaviour {
             {
                 Destroy(obj.gameObject);
 				Score.plusScore (1);
+
 				Debug.Log (Score.score);
+                uIScore.text = "Score: " + Score.score;
                 isDestroyed = true;
                 GameObject.FindGameObjectWithTag("GameManager").SendMessage("removeBlocks");
             }
+            /*
             if (objToTest.blockType == 1 && !DisableSpecial[0])
             {
                 GameObject.FindGameObjectWithTag("GameManager").SendMessage("Specials", 1);
                 DisableSpecial[0] = true;
             }
+            */
             if (objToTest.blockType == 2 && !DisableSpecial[1])
             {
                 GameObject.FindGameObjectWithTag("GameManager").SendMessage("Specials", 2);
@@ -37,11 +45,7 @@ public class DestroyBlocks : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("GameManager").SendMessage("Specials", 3);
                 DisableSpecial[2] = true;
             }
-            if (objToTest.blockType == 4 && !DisableSpecial[3])
-            {
-                GameObject.FindGameObjectWithTag("GameManager").SendMessage("Specials", 4);
-                DisableSpecial[3] = true;
-            }
+            
         }
         if (isDestroyed)
         {
@@ -56,22 +60,22 @@ public class DestroyBlocks : MonoBehaviour {
 			allList.Add (other);
 			Debug.Log ("Block "+ other.gameObject.GetInstanceID() + " added!!");
 		}
-
-	}
+        
+        DefaultBlock objToTest = other.GetComponent<DefaultBlock>();
+        if (objToTest.blockType == 1)
+        {
+            GameObject.FindGameObjectWithTag("GameManager").SendMessage("Specials", 1);
+        }
+        DisableSpecial[0] = true;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!isFirstWater)
+        DefaultBlock objToTest = other.GetComponent<DefaultBlock>();
+        if (objToTest.blockType == 4)
         {
-            DefaultBlock objToTest = other.GetComponent<DefaultBlock>();
-            if (objToTest.blockType == 1)
-            {
-                GameObject.FindGameObjectWithTag("GameManager").SendMessage("Specials", 1);
-            }
-            isFirstWater = true;
+            GameObject.FindGameObjectWithTag("GameManager").SendMessage("Specials", 4);
         }
-        
-
     }
 
     void DestroyFirstLine()
@@ -83,6 +87,7 @@ public class DestroyBlocks : MonoBehaviour {
             isDestroyed = true;
             GameObject.FindGameObjectWithTag("GameManager").SendMessage("removeBlocks");
         }
+
         if (isDestroyed)
         {
             allList.Clear();
